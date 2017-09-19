@@ -96,16 +96,21 @@ class LinkedList {
         var tmp = this._head;
         if(!this.length || index >= this.length || index < 0)
             return this;
+        
         var i = 0;
         while(i < index){
             tmp = tmp.next;
             i++;
-        }    
-        if(index == 0){
+        } 
+        if(index == 0 && this.length == 1){
+            this._head = null; 
+            this._tail = null;
+        } 
+        else if(index == 0 && this.length > 1){
             this._head = this._head.next; 
             this._head.prev = null;
         }
-        if(index == this.length - 1){
+        else if(index == this.length - 1){
             this._tail = this._tail.prev;
             this._tail.next = null;
         }
